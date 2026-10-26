@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacidade - Barber Control</title>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1c1714;
+            color: #f2f2f2;
+            min-height: 100vh;
+        }
+
+        .topo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 40px;
+            border-bottom: 1px solid #332d29;
+        }
+
+        .marca {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .marca-icone {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: #ffc107;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            font-size: 16px;
+        }
+
+        .marca-nome {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .marca-nome span {
+            font-weight: 400;
+            color: #ffc107;
+        }
+
+        .voltar {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 13.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+        }
+
+        .voltar:hover {
+            color: #ffc107;
+        }
+
+        main {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        .cabecalho {
+            margin-bottom: 40px;
+        }
+
+        .cabecalho .eyebrow {
+            color: #ffc107;
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            margin-bottom: 10px;
+        }
+
+        .cabecalho h1 {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .cabecalho p {
+            color: #b8b8b8;
+            font-size: 15px;
+            max-width: 58ch;
+            line-height: 1.6;
+        }
+
+        section {
+            background-color: #241d18;
+            border: 1px solid #332d29;
+            border-radius: 12px;
+            padding: 26px 28px;
+            margin-bottom: 20px;
+        }
+
+        .secao-cabecalho {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .secao-numero {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background-color: #ffc107;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13.5px;
+            flex-shrink: 0;
+        }
+
+        h2 {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        p {
+            color: #d0d0d0;
+            font-size: 14px;
+            line-height: 1.65;
+            margin-bottom: 10px;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            font-size: 13px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 9px 10px;
+            border-bottom: 1px solid #332d29;
+        }
+
+        th {
+            color: #ffc107;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        td {
+            color: #d0d0d0;
+        }
+
+        .status-linha {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            background-color: #1c1714;
+            border: 1px solid #332d29;
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-top: 10px;
+        }
+
+        .status-linha i {
+            color: #ffc107;
+            font-size: 14px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .status-linha .titulo {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #f2f2f2;
+        }
+
+        .status-linha .desc {
+            font-size: 12.5px;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        .acao-card {
+            border: 1px solid #332d29;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-top: 12px;
+            background-color: #1c1714;
+        }
+
+        .acao-card h3 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #ffc107;
+        }
+
+        .acao-card p {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .acao-card .como {
+            font-size: 12px;
+            color: #888;
+            margin-top: 6px;
+        }
+
+        code {
+            font-family: 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.88em;
+            background: #332d29;
+            padding: 1px 6px;
+            border-radius: 4px;
+            color: #ffc107;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #332d29;
+        }
+
+        @media (max-width: 560px) {
+            .topo { padding: 18px 20px; }
+            main { padding: 32px 16px 60px; }
+            .cabecalho h1 { font-size: 24px; }
+            section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="topo">
+    <div class="marca">
+        <div class="marca-icone"><i class="fa-solid fa-scissors"></i></div>
+        <div class="marca-nome">BARBER<span>CONTROL</span></div>
+    </div>
+    <!-- Padrão: volta para a criação de conta. Se veio do agendamento do cliente, o script no fim muda o destino. -->
+    <a href="criar-conta.html" id="link-voltar" class="voltar">
+        <i class="fa-solid fa-arrow-left"></i> Voltar
+    </a>
+</div>
+
+<main>
+
+    <div class="cabecalho">
+        <div class="eyebrow">PRIVACIDADE E PROTEÇÃO DE DADOS</div>
+        <h1>Como tratamos seus dados</h1>
+        <p>Esta página explica, em linguagem direta, quais dados o Barber Control guarda, por quê, e o que você pode fazer a qualquer momento — conforme a Lei Geral de Proteção de Dados (Lei 13.709/2018). Ela vale para os barbeiros que usam o painel e para os clientes que agendam um horário.</p>
+    </div>
+
+    <section>
+        <div class="secao-cabecalho">
+            <div class="secao-numero">1</div>
+            <h2>O que coletamos e por quê</h2>
+        </div>
+        <p>Coletamos apenas o necessário para operar as contas e a agenda de atendimentos.</p>
+        <table>
+            <tr><th>Dado</th><th>Para quê</th><th>Base legal</th></tr>
+            <tr><td>Nome e e-mail do barbeiro</td><td>Identificar a conta e permitir contato</td><td>Execução de contrato</td></tr>
+            <tr><td>Senha do barbeiro</td><td>Autenticar o acesso ao painel</td><td>Execução de contrato</td></tr>
+            <tr><td>Aceite desta política (data e hora)</td><td>Comprovar que o barbeiro tomou ciência ao criar a conta</td><td>Consentimento</td></tr>
+            <tr><td>Nome e telefone do cliente</td><td>Confirmar e organizar cada agendamento</td><td>Execução de contrato</td></tr>
+        </table>
+    </section>
+
+    <section>
+        <div class="secao-cabecalho">
+            <div class="secao-numero">2</div>
+            <h2>Como protegemos seus dados</h2>
+        </div>
+
+        <p>Adotamos medidas técnicas e organizacionais para proteger seus dados contra acessos não autorizados, perda ou uso indevido.</p>
+
+        <div class="status-linha">
+            <i class="fa-solid fa-lock"></i>
+            <div>
+                <div class="titulo">A senha nunca é armazenada de forma legível</div>
+                <div class="desc">Ela passa por um processo de criptografia antes de ser salva, e não é exibida em nenhuma tela do sistema.</div>
+            </div>
+        </div>
+
+        <div class="status-linha">
+            <i class="fa-solid fa-key"></i>
+            <div>
+                <div class="titulo">O painel exige autenticação segura</div>
+                <div class="desc">Cada barbeiro só visualiza e gerencia os próprios dados e agendamentos, nunca os de outra conta.</div>
+            </div>
+        </div>
+
+        <div class="status-linha">
+            <i class="fa-solid fa-eye-slash"></i>
+            <div>
+                <div class="titulo">A página de agendamento não expõe dados de outros clientes</div>
+                <div class="desc">Quem agenda vê apenas os horários livres, nunca o nome ou o telefone de quem já agendou.</div>
+            </div>
+        </div>
+
+        <div class="status-linha">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>
+                <div class="titulo">Credenciais do sistema ficam protegidas</div>
+                <div class="desc">As chaves de segurança usadas internamente pelo sistema não ficam expostas nem acessíveis publicamente.</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="secao-cabecalho">
+            <div class="secao-numero">3</div>
+            <h2>Responsável e contato</h2>
+        </div>
+        <p>Os dados de acesso do barbeiro (e-mail e senha) são tratados pelo Barber Control. Os dados de quem agenda um horário (nome e telefone) pertencem à barbearia que recebeu o agendamento, e o Barber Control atua apenas como o sistema que os armazena.</p>
+        <p>Se você tiver dúvidas sobre esta política ou quiser exercer algum dos seus direitos, fale com o encarregado pelo tratamento de dados:</p>
+        <p><code>suporte@barbercontrol.com</code></p>
+    </section>
+
+    <section>
+        <div class="secao-cabecalho">
+            <div class="secao-numero">4</div>
+            <h2>Seus direitos</h2>
+        </div>
+        <p>Você pode exercer esses direitos a qualquer momento, entrando em contato com o encarregado de dados (seção 3).</p>
+
+        <div class="acao-card">
+            <h3>Saber quais dados temos sobre você</h3>
+            <p>Solicite uma cópia de tudo o que está associado à sua conta ou ao seu agendamento.</p>
+            <div class="como">Como: envie um e-mail para o contato da seção 3.</div>
+        </div>
+
+        <div class="acao-card">
+            <h3>Corrigir dados incorretos</h3>
+            <p>Se algo estiver errado (nome, e-mail ou telefone), peça a correção.</p>
+        </div>
+
+        <div class="acao-card">
+            <h3>Excluir seus dados ou encerrar sua conta</h3>
+            <p>A exclusão remove seus dados pessoais do sistema, exceto quando a lei exigir a guarda por outro prazo.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="secao-cabecalho">
+            <div class="secao-numero">5</div>
+            <h2>Por quanto tempo guardamos</h2>
+        </div>
+        <p>Mantemos os dados enquanto a conta estiver ativa ou enquanto o agendamento for necessário. Ao encerrar a conta, os dados do barbeiro e os agendamentos ligados a ela são removidos do banco de dados, exceto quando a lei exigir retenção por outro prazo.</p>
+    </section>
+
+    <section>
+        <div class="secao-cabecalho">
+            <div class="secao-numero">6</div>
+            <h2>Com quem compartilhamos</h2>
+        </div>
+        <p>Não vendemos nem compartilhamos seus dados com terceiros para fins comerciais. Os dados ficam apenas no banco de dados do sistema, usados exclusivamente para operar a agenda da barbearia.</p>
+    </section>
+
+</main>
+
+<footer>
+    Última atualização: setembro de 2026 · Barber Control
+</footer>
+
+<script>
+    // Se o cliente abriu esta página pelo agendamento, o "Voltar" leva de volta pra lá
+    if (new URLSearchParams(location.search).get("origem") === "cliente") {
+        document.getElementById("link-voltar").href = "agendamento-cliente.html";
+    }
+</script>
+
+</body>
+</html>
